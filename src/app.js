@@ -10,16 +10,16 @@
   myApp.config(require('./routes'));
 
   // directives
-  myApp.directive("menuDirective", require('./directives/menuDirective'));
-  myApp.directive("headerDirective", require('./directives/headerDirective'));
+  myApp.directive("menuDirective", require('./directives/menu.directive'));
+  myApp.directive("headerDirective", require('./directives/header.directive'));
 
   // services
-  myApp.service('testService', ['$http', require('./areas/test/testService')]);
-  myApp.service('mainService', ['$http', require('./areas/main/mainService')]);
+  myApp.service('testService', ['$http', require('./areas/test/test.service')]);
+  myApp.service('mainService', ['$http', require('./areas/main/main.service')]);
 
   // controllers
-  myApp.controller('mainController', ['$scope', 'mainService', require('./areas/main/mainController')]);
-  myApp.controller('testController', ['$scope', 'testService', require('./areas/test/testController')]);
+  myApp.controller('mainController', ['$scope', 'mainService', require('./areas/main/main.controller')]);
+  myApp.controller('testController', ['$scope', 'testService', require('./areas/test/test.controller')]);
 
   // styles
   require('./styles/styles.css');
