@@ -9,7 +9,7 @@
       this.getBucketsAlt = function() {
           return $http({
               method: 'GET',
-              url: 'https://www.dinamotek.ca/sandbox/api/s3/buckets/'
+              url: 'http://www.dinamotek.ca/sandbox/api/s3/buckets/'
           }).then(function successCallback(response) {
               return response.data;
           }, function errorCallback(response) {
@@ -20,7 +20,7 @@
       }
 
       this.getBuckets = function() {
-          return $http.get('https://www.dinamotek.ca/sandbox/api/s3/buckets/')
+          return $http.get('http://www.dinamotek.ca/sandbox/api/s3/buckets/')
               .then(function(response) {
                   return response.data;
               })
