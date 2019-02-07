@@ -19,7 +19,7 @@
 
   // controllers
   myApp.controller('mainController', ['$scope', 'mainService', require('./areas/main/main.controller')]);
-  myApp.controller('testController', ['$scope', 'testService', require('./areas/test/test.controller')]);
+  myApp.controller('testController', ['$scope', '$sce', 'testService', require('./areas/test/test.controller')]);
 
   // styles
   require('./styles/styles.css');

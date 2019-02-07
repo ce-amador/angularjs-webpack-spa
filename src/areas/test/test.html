@@ -1,1 +1,18 @@
 <p><strong>{{ message }}</strong></p>
+
+<span ng-repeat="elem in initials">
+  <button type="button" class="btn btn-primary" ng-click="getPersons(elem)">{{ elem }}</button>
+</span>
+<br/>
+<div>
+  <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
+    <button type="button" class="btn btn-link" ng-repeat="p in persons" ng-click="getFiles(p.personID)">{{ p.name }}</button>
+  </div>
+  <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
+    <button type="button" class="btn btn-link" ng-repeat="f in files" ng-click="getFile(f.personFileID)">{{ f.fileName }}</button>
+  </div>
+  <div class="col-md-8" style="border: solid 1px grey;">
+    <video width="600" ng-src="{{ fileUrl }}" controls></video>
+    <p>{{ fileUrl }}</p>
+  </div>
+</div>

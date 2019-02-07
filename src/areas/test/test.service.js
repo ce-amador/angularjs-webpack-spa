@@ -2,17 +2,39 @@
   "use strict";
   var svc = function($http) {
 
-      this.getNGStatus = function(){
-          return 'Test Service Working!!!';
-      };
+    this.getInitials = function() {
+        return $http.get('http://lenovo:83/api/persons/initials')
+            .then(function(response) {
+                return response.data;
+            })
+            .catch(function(response){
+                console.log(response.status);
+            });
+    }
 
-      this.getItems = function(statusID) {
-          return $http
-              .get('api/items')
-              .then(function(response) {
-                  return response.data;
-              });
-      };
+    this.getPersons = function(initial) {
+        return $http.get('http://lenovo:83/api/persons?initial=' + initial)
+            .then(function(response) {
+                return response.data;
+            })
+            .catch(function(response){
+                console.log(response.status);
+            });
+    }
+
+    this.getFiles = function(personID) {
+        return $http.get('http://lenovo:83/api/persons/' + personID + '/files')
+            .then(function(response) {
+                return response.data;
+            })
+            .catch(function(response){
+                console.log(response.status);
+            });
+    }
+
+    this.getNGStatus = function(){
+        return 'Test Service Working!!!!!';
+    };
   }
 
   svc.$inject = ['$http'];
