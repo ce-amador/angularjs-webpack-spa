@@ -33,7 +33,7 @@
     }
 
     this.getNGStatus = function(){
-        return 'Test Service Working!!!!!';
+        return 'Visor Service Working!!!!!';
     };
   }
 

@@ -7,9 +7,9 @@
       $routeProvider.when('/', {
           controller: 'mainController',
           template: require('./areas/main/main.html')
-      }).when('/test', {
-          controller: 'testController',
-          template: require('./areas/test/test.html')
+      }).when('/visor', {
+          controller: 'visorController',
+          template: require('./areas/visor/visor.html')
       })
   };
 

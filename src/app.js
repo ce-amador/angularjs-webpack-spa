@@ -14,12 +14,12 @@
   myApp.directive("headerDirective", require('./directives/header.directive'));
 
   // services
-  myApp.service('testService', ['$http', require('./areas/test/test.service')]);
+  myApp.service('visorService', ['$http', require('./areas/visor/visor.service')]);
   myApp.service('mainService', ['$http', require('./areas/main/main.service')]);
 
   // controllers
   myApp.controller('mainController', ['$scope', 'mainService', require('./areas/main/main.controller')]);
-  myApp.controller('testController', ['$scope', '$sce', 'testService', require('./areas/test/test.controller')]);
+  myApp.controller('visorController', ['$scope', '$sce', 'visorService', require('./areas/visor/visor.controller')]);
 
   // styles
   require('./styles/styles.css');
