@@ -1,12 +1,15 @@
+<span>{{ initialsMessage }}</span>
 <span ng-repeat="elem in initials">
   <button type="button" class="btn btn-primary" ng-click="getPersons(elem)">{{ elem }}</button>
 </span>
 <br/>
 <div>
   <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
+    <span>{{ personsMessage }}</span>
     <button type="button" class="btn btn-link" ng-repeat="p in persons" ng-click="getFiles(p.personID)">{{ p.name }}</button>
   </div>
   <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
+    <span>{{ filesMessage }}</span>
     <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="right" title="{{ f.fileName }}" ng-repeat="f in files" ng-click="getFile(f)">{{ f.fileName }}</button>
   </div>
   <div class="col-md-8" style="border: solid 1px grey;">

@@ -3,19 +3,30 @@
 
   var ctrl = function($scope, $sce, visorService) {
 
+    var loadingMessage = "Loading...";
+    $scope.initialsMessage = "";
+    $scope.personsMessage = "";
+    $scope.filesMessage = "";
+
     visorService.getInitials().then(function(data) {
+        $scope.initialsMessage = loadingMessage;
         $scope.initials = data;
+        $scope.initialsMessage = "";
     });
 
     $scope.getPersons = function(initial) {
+      $scope.personsMessage = loadingMessage;
       visorService.getPersons(initial).then(function(data) {
+          $scope.personsMessage = "";
           $scope.persons = data;
           $scope.files = null;
       });
     };
 
     $scope.getFiles = function(personID) {
+      $scope.filesMessage = loadingMessage;
       visorService.getFiles(personID).then(function(data) {
+          $scope.filesMessage = "";
           $scope.files = data;
       });
     };
