@@ -1,2 +1,14 @@
-<button class="btn btn-danger" ng-click="doSomething()">Call API</button>
-<p>{{ message }}</b>
+<div>
+  <button class="btn btn-primary" ng-click="showImportStats()" ng-disabled="isProcessing">Statistics</button>
+  <button class="btn btn-primary" ng-click="startImportProcess()" ng-disabled="isProcessing">Import</button>
+  <span>{{ message }}</span>
+</div>
+<div class="pre-scrollable col-md-6">
+  <table class="table">
+    <tr ng-repeat="s in stats" >
+      <td style="border: solid 1px grey;">{{ s.initial }}</td>
+      <td style="border: solid 1px grey;">{{ s.personsCount }}</td>
+      <td style="border: solid 1px grey;">{{ s.personFilesCount }}</td>
+    </tr>
+  </table>
+</div>

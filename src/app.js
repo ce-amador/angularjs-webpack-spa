@@ -18,7 +18,7 @@
   myApp.service('mainService', ['$http', require('./areas/main/main.service')]);
 
   // controllers
-  myApp.controller('mainController', ['$scope', 'mainService', require('./areas/main/main.controller')]);
+  myApp.controller('mainController', ['$scope', '$interval', 'mainService', require('./areas/main/main.controller')]);
   myApp.controller('visorController', ['$scope', '$sce', 'visorService', require('./areas/visor/visor.controller')]);
 
   // styles
