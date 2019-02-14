@@ -1,19 +1,22 @@
-<span>{{ initialsMessage }}</span>
-<span ng-repeat="elem in initials">
-  <button type="button" class="btn btn-primary" ng-click="getPersons(elem)">{{ elem }}</button>
-</span>
-<br/>
 <div>
-  <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
-    <span>{{ personsMessage }}</span>
-    <button type="button" class="btn btn-link" ng-repeat="p in persons" ng-click="getFiles(p.personID)">{{ p.name }}</button>
-  </div>
-  <div class="col-md-2 pre-scrollable" style="border: solid 1px grey;">
-    <span>{{ filesMessage }}</span>
-    <button type="button" class="btn btn-link" data-toggle="tooltip" data-placement="right" title="{{ f.fileName }}" ng-repeat="f in files" ng-click="getFile(f)">{{ f.fileName }}</button>
-  </div>
-  <div class="col-md-8" style="border: solid 1px grey;">
-    <video width="600" ng-src="{{ fileUrl }}" controls></video>
-    <p>{{ fileName }}</p>
+  <span>{{ initialsMessage }}</span>
+  <span ng-repeat="elem in initials">
+    <button type="button" class="btn btn-outline-primary btn-sm" ng-click="getPersons(elem)">{{ elem }}</button>
+  </span>
+</div>
+<div class="container" style="margin-top: 5px;">
+  <div class="row">
+    <div class="col-sm-2 text-center pre-scrollable">
+      <span>{{ personsMessage }}</span>
+      <button type="button" class="btn btn-outline-primary" style="font-size: 12px;" ng-repeat="p in persons" ng-click="getFiles(p.personID)">{{ p.name }}</button>
+    </div>
+    <div class="col-sm-2 text-center pre-scrollable">
+      <span>{{ filesMessage }}</span>
+      <button type="button" class="btn btn-outline-primary" style="font-size: 10px;" data-toggle="tooltip" data-placement="right" title="{{ f.fileName }}" ng-repeat="f in files" ng-click="getFile(f)">{{ f.fileName.substring(0, 40).split('+').join(' ').split('_').join(' ').split('.').join(' ') }}</button>
+    </div>
+    <div class="col-sm-8">
+      <video width="600" ng-src="{{ fileUrl }}" controls></video>
+      <p>{{ fileName }}</p>
+    </div>
   </div>
 </div>

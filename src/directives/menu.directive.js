@@ -3,7 +3,7 @@
   module.exports = function() {
       return {
           restrict: 'E',
-          template: "<p><a href='#!/'>Main</a> | <a href='#!/visor'>Visor</a></p>"
+          template: "<nav class='nav'><a class='nav-link' href='#!/'>Stats</a><a class='nav-link' href='#!/visor'>Visor</a></nav>"
       };
   };
 })();

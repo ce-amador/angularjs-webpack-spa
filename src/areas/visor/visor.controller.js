@@ -4,12 +4,12 @@
   var ctrl = function($scope, $sce, visorService) {
 
     var loadingMessage = "Loading...";
-    $scope.initialsMessage = "";
+    $scope.initialsMessage = loadingMessage;
     $scope.personsMessage = "";
     $scope.filesMessage = "";
 
-    visorService.getInitials().then(function(data) {
-        $scope.initialsMessage = loadingMessage;
+    visorService.getInitials()
+    .then(function(data) {
         $scope.initials = data;
         $scope.initialsMessage = "";
     });
