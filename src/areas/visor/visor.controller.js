@@ -44,9 +44,13 @@
     };
 
     $scope.updateFile = function() {
-      visorService.updateFile($scope.selectedFile);
-      $scope.editing = false;
-      $scope.getFiles($scope.selectedFile.personID);
+      visorService.updateFile($scope.selectedFile)
+      .then(function(status) {
+        if (status == 200) {
+          $scope.editing = false;
+          $scope.getFiles($scope.selectedFile.personID);
+        }
+      });
     };
   }
 

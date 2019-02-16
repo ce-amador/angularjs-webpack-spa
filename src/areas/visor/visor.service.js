@@ -37,7 +37,7 @@
           'http://lenovo:83/api/personFiles/',
           JSON.stringify(personFile))
             .then(function(response) {
-                consule.log(response.status);
+                return response.status;
             })
             .catch(function(response){
                 console.log(response.status);

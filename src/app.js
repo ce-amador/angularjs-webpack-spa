@@ -5,6 +5,7 @@
   var angular = require('angular');
   require('angular-route');
   require('bootstrap');
+  //require('angular-ui-grid');
 
   var myApp = angular.module('myApp', ['ngRoute']);
   myApp.config(require('./routes'));
