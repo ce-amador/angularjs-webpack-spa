@@ -14,9 +14,18 @@
       <span>{{ filesMessage }}</span>
       <button type="button" class="btn btn-outline-primary" style="font-size: 10px;" data-toggle="tooltip" data-placement="right" title="{{ f.fileName }}" ng-repeat="f in files" ng-click="getFile(f)">{{ f.fileName.substring(0, 40).split('+').join(' ').split('_').join(' ').split('.').join(' ') }}</button>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8" ng-show="showVideo">
       <video width="600" ng-src="{{ fileUrl }}" controls></video>
-      <p>{{ fileName }}</p>
+      <div>
+        <span ng-hide="editing">
+          {{ selectedFile.fileName }}
+          <span ng-click="editing = true" class="btn btn-link" style="font-size: 12px;">Edit</span>
+        </span>
+        <span ng-show="editing">
+          <input type="text" ng-model="selectedFile.fileName" />
+          <span ng-click="updateFile()" class="btn btn-link" style="font-size: 12px;">Save</span>
+        </span>
+      </div>
     </div>
   </div>
 </div>

@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-    <title>Visor</title>
+  <title>Visor</title>
 </head>
 <body>
-    <main class="container">
-        <header-directive title='Visor'></header-directive>
-        <menu-directive></menu-directive>
-        <div class="container" ng-view />
-    </main>
+  <main class="container">
+    <div class="container">
+      <div class="row">
+        <div class="col-3-md">
+          <header-directive title='Visor'></header-directive>
+        </div>
+        <div class="col-9-md" style="padding-top: 15px;">
+          <menu-directive></menu-directive>
+        </div>
+      </div>
+    </div>
+    <div class="container" ng-view />
+  </main>
 </body>
 </html>

@@ -4,6 +4,9 @@
   var ctrl = function($scope, $sce, visorService) {
 
     var loadingMessage = "Loading...";
+    $scope.selectedFile;
+    $scope.showVideo = false;
+    $scope.editing = false;
     $scope.initialsMessage = loadingMessage;
     $scope.personsMessage = "";
     $scope.filesMessage = "";
@@ -20,20 +23,30 @@
           $scope.personsMessage = "";
           $scope.persons = data;
           $scope.files = null;
+          $scope.showVideo = false;
       });
     };
 
     $scope.getFiles = function(personID) {
       $scope.filesMessage = loadingMessage;
       visorService.getFiles(personID).then(function(data) {
+          $scope.showVideo = false;
           $scope.filesMessage = "";
           $scope.files = data;
       });
     };
 
     $scope.getFile = function(file) {
+      $scope.selectedFile = file;
       $scope.fileUrl = $sce.trustAsResourceUrl("http://lenovo:83/api/persons/files/" + file.personFileID);
-      $scope.fileName = file.fileName;
+      $scope.showVideo = true;
+      //$scope.fileName = file.fileName;
+    };
+
+    $scope.updateFile = function() {
+      visorService.updateFile($scope.selectedFile);
+      $scope.editing = false;
+      $scope.getFiles($scope.selectedFile.personID);
     };
   }
 

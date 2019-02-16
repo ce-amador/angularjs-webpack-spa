@@ -32,9 +32,17 @@
             });
     }
 
-    this.getNGStatus = function(){
-        return 'Visor Service Working!!!!!';
-    };
+    this.updateFile = function(personFile) {
+        return $http.put(
+          'http://lenovo:83/api/personFiles/',
+          JSON.stringify(personFile))
+            .then(function(response) {
+                consule.log(response.status);
+            })
+            .catch(function(response){
+                console.log(response.status);
+            });
+    }
   }
 
   svc.$inject = ['$http'];
