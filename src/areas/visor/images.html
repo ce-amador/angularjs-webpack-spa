@@ -1,0 +1,21 @@
+<div>
+  <span>{{ initialsMessage }}</span>
+  <span ng-repeat="elem in initials">
+    <button type="button" class="btn btn-outline-primary btn-sm" ng-click="getPersons(elem)">{{ elem }}</button>
+  </span>
+</div>
+<div class="container" style="margin-top: 5px;">
+  <div class="row">
+    <div class="col-sm-2 text-center pre-scrollable">
+      <span>{{ personsMessage }}</span>
+      <button type="button" class="btn btn-outline-primary" style="font-size: 12px;" ng-repeat="p in persons" ng-click="getFolders(p.personID)">{{ p.name }}</button>
+    </div>
+    <div class="col-sm-2 text-center pre-scrollable">
+      <span>{{ foldersMessage }}</span>
+      <button type="button" class="btn btn-outline-primary" style="font-size: 10px;" data-toggle="tooltip" data-placement="right" title="{{ f.fileFolder }}" ng-repeat="f in fileFolders" ng-click="getImages(f.fileFolder)">{{ f.fileFolder }}</button>
+    </div>
+    <div class="col-sm-8" ng-show="true">
+      <span ng-repeat="img in images"><a href="http://lenovo:83/api/persons/images/{{ img.personFileID }}" target="_blank"><img src="http://lenovo:83/api/persons/images/{{ img.personFileID }}?thumbnail=true" /></a></span>
+    </div>
+  </div>
+</div>

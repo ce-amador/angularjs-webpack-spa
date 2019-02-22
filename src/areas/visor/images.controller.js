@@ -4,12 +4,12 @@
   var ctrl = function($scope, $sce, visorService) {
 
     var loadingMessage = "Loading...";
-    $scope.selectedFile;
+    $scope.selectedPersonID;
     $scope.showVideo = false;
     $scope.editing = false;
     $scope.initialsMessage = loadingMessage;
     $scope.personsMessage = "";
-    $scope.filesMessage = "";
+    $scope.foldersMessage = "";
 
     visorService.getInitials()
     .then(function(data) {
@@ -27,29 +27,28 @@
       });
     };
 
-    $scope.getFiles = function(personID) {
+    $scope.getFolders = function(personID) {
       $scope.filesMessage = loadingMessage;
-      visorService.getFiles(personID).then(function(data) {
-          //$scope.showVideo = false;
-          $scope.filesMessage = "";
-          $scope.files = data;
+      visorService.getFolders(personID).then(function(data) {
+          $scope.foldersMessage = "";
+          $scope.fileFolders = data;
+          $scope.selectedPersonID = personID;
       });
     };
 
-    $scope.getFile = function(file) {
-      $scope.selectedFile = file;
-      $scope.fileUrl = $sce.trustAsResourceUrl("http://lenovo:83/api/persons/files/" + file.personFileID);
-      $scope.showVideo = true;
-      //$scope.fileName = file.fileName;
+    $scope.getImages = function(folderName) {
+      //$scope.filesMessage = loadingMessage;
+      visorService.getImages($scope.selectedPersonID, folderName).then(function(data) {
+          //$scope.foldersMessage = "";
+          $scope.images = data;
+      });
     };
 
-    $scope.updateFile = function() {
-      visorService.updateFile($scope.selectedFile)
-      .then(function(status) {
-        if (status == 200) {
-          $scope.editing = false;
-          $scope.getFiles($scope.selectedFile.personID);
-        }
+    $scope.getImage = function(personFileID) {
+      //$scope.filesMessage = loadingMessage;
+      visorService.getImages($scope.selectedPersonID, folderName).then(function(data) {
+          //$scope.foldersMessage = "";
+          $scope.images = data;
       });
     };
   }

@@ -21,6 +21,7 @@
   // controllers
   myApp.controller('mainController', ['$scope', '$interval', '$location', '$anchorScroll', 'mainService', require('./areas/main/main.controller')]);
   myApp.controller('visorController', ['$scope', '$sce', 'visorService', require('./areas/visor/visor.controller')]);
+  myApp.controller('imagesController', ['$scope', '$sce', 'visorService', require('./areas/visor/images.controller')]);
 
   // styles
   require('./styles/styles.css');

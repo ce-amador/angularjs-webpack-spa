@@ -10,6 +10,9 @@
       }).when('/visor', {
           controller: 'visorController',
           template: require('./areas/visor/visor.html')
+      }).when('/images', {
+          controller: 'imagesController',
+          template: require('./areas/visor/images.html')
       })
   };
 
