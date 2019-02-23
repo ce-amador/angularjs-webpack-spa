@@ -15,7 +15,7 @@
       <button type="button" class="btn btn-outline-primary" style="font-size: 10px;" data-toggle="tooltip" data-placement="right" title="{{ f.fileFolder }}" ng-repeat="f in fileFolders" ng-click="getImages(f.fileFolder)">{{ f.fileFolder }}</button>
     </div>
     <div class="col-sm-8 pre-scrollable" ng-show="true">
-      <span ng-repeat="img in images"><a href="http://lenovo:83/api/persons/images/{{ img.personFileID }}" target="_blank"><img src="http://lenovo:83/api/persons/images/{{ img.personFileID }}?thumbnail=true" /></a></span>
+      <span ng-repeat="img in images"><a href="http://lenovo:83/api/persons/images/{{ img.personFileID }}" target="_blank"><img alt="loading" src="http://lenovo:83/api/persons/images/{{ img.personFileID }}?thumbnail=true" /></a></span>
     </div>
   </div>
 </div>
