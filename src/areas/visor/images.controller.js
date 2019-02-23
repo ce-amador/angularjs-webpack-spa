@@ -19,7 +19,7 @@
 
     $scope.getPersons = function(initial) {
       $scope.personsMessage = loadingMessage;
-      visorService.getPersons(initial).then(function(data) {
+      visorService.getPersonsWithImages(initial).then(function(data) {
           $scope.personsMessage = "";
           $scope.persons = data;
           //$scope.files = null;

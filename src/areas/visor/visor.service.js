@@ -24,6 +24,16 @@
             });
     }
 
+    this.getPersonsWithImages = function(initial) {
+        return $http.get('http://lenovo:83/api/persons?initial=' + initial + '&withImages=true' )
+            .then(function(response) {
+                return response.data;
+            })
+            .catch(function(response){
+                console.log(response.status);
+            });
+    }
+
     this.getFiles = function(personID) {
         return $http.get('http://lenovo:83/api/persons/' + personID + '/files')
             .then(function(response) {
