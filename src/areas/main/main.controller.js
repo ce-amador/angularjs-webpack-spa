@@ -1,9 +1,9 @@
 (function() {
   /*jshint -W097 */
   "use strict";
-  var ctrl = function($scope, $interval, $location, $anchorScroll, mainService) {
+  var ctrl = function($scope, $interval, $location, $anchorScroll, uiGridConstants, mainService) {
 
-      $scope.totals = { persons: 0, files: 0, images: 0 };
+      $scope.stats = [];
       var prevTotalFiles = -1;
       var intervalPromise;
       callAtInterval();
@@ -20,9 +20,9 @@
       function callAtInterval() {
           mainService.getImporterStats().then(function(data) {
               $scope.stats = data;
-              calculateTotals($scope.stats);
-              $location.hash('bottom');
-              $anchorScroll();
+              $scope.gridOptions.data = $scope.stats;
+              //$location.hash('bottom');
+              //$anchorScroll();
           });
       }
 
@@ -49,14 +49,22 @@
           return totalFiles;
       }
 
-      function calculateTotals(stats) {
-          angular.forEach(stats, function(stat) {
-            $scope.totals.persons += stat.personsCount;
-            $scope.totals.files += stat.personFilesCount;
-            $scope.totals.images += stat.personImagesCount;
-          });
-      }
+      $scope.gridOptions = {
+        //showGridFooter: true,
+        showColumnFooter: true,
+        //enableFiltering: true,
+        columnDefs: [
+            { field: 'initial', width: '25%', cellClass: 'text-center' },
+            { field: 'personsCount', displayName: 'Persons', width: '25%', cellClass: 'text-right', footerCellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum, aggregationHideLabel: true },
+            { field: 'personFilesCount', displayName: 'Files', width: '25%', cellClass: 'text-right', footerCellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum, aggregationHideLabel: true },
+            { field: 'personImagesCount', displayName: 'Images', width: '25%', cellClass: 'text-right', footerCellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum, aggregationHideLabel: true }
+        ],
+        data: $scope.stats,
+        onRegisterApi: function(gridApi) {
+            $scope.gridApi = gridApi;
+        }
+      };
   }
-  ctrl.$inject = ['$scope', '$interval', '$location', '$anchorScroll', 'mainService'];
+  ctrl.$inject = ['$scope', '$interval', '$location', '$anchorScroll', 'uiGridConstants', 'mainService'];
   module.exports = ctrl;
 })();

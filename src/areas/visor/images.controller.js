@@ -51,6 +51,10 @@
           $scope.images = data;
       });
     };
+
+    $scope.getImageLink = function(personFileID, thumbnail) {
+      return "http://lenovo:83/api/persons/images/" + personFileID + (thumbnail ? "?thumbnail=true" : "x");
+    };
   }
 
   ctrl.$inject = ['$scope', '$sce', 'visorService'];

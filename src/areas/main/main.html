@@ -1,32 +1,4 @@
-<div class="row">
-  <div class="pre-scrollable col-md-6" style="margin-top: 5px; height: 700px;">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Initials</th>
-          <th scope="col">Persons</th>
-          <th scope="col">Files</th>
-          <th scope="col">Images</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="s in stats" >
-          <td style="border: solid 1px grey;">{{ s.initial }}</td>
-          <td style="border: solid 1px grey;">{{ s.personsCount }}</td>
-          <td style="border: solid 1px grey;">{{ s.personFilesCount }}</td>
-          <td style="border: solid 1px grey;">{{ s.personImagesCount }}</td>
-        </tr>
-        <tr>
-          <td scope="col"></td>
-          <td scope="col"><strong>{{ totals.persons }}</strong></td>
-          <td scope="col"><strong>{{ totals.files }}</strong></td>
-          <td scope="col"><strong>{{ totals.images }}</strong></td>
-        </tr>
-      </tbody>
-    </table>
-    <a id="bottom"></a>
-  </div>
-</div>
+<div ui-grid="gridOptions" class="grid"></div>
 <div class="row">
   <div class="col-md-6">
     <button class="btn btn-link btn-sm" style="font-size: 12px;" ng-click="showImportStats()" ng-disabled="isProcessing">Refresh Stats</button>
@@ -34,4 +6,3 @@
     <span>{{ message }}</span>
   </div>
 </div>
-<div ui-grid="{ data: stats }" class=""></div>
